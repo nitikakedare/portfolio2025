@@ -520,5 +520,13 @@ font-family:'Comic Neue', cursive;
     object-fit: contain;
 }
 
+.contact-illustration {
+    position: absolute;
+    left: 100px;
+    top: 30px;
+    width: 450px;
+    height: auto;
+    z-index: 5;
+}
 
 
