@@ -2,6 +2,14 @@ html {
   scroll-behavior: auto;
 }
 
+body {
+    cursor: url('arrow.png'), auto;
+}
+
+a, button {
+    cursor: url('hand.png') 16 0, pointer;
+}
+
 /* GENERAL */
 body {
     background: #000;
@@ -9,6 +17,7 @@ body {
     color: white;
     margin: 0;
 }
+
 
 /* NAVBAR */
 .navbar {
@@ -36,11 +45,12 @@ body {
     color: white;
 }
 
+
 /* HERO SECTION */
 .hero {
     position: relative;
     min-height: 100vh;
-    padding: 120px 0 60px;
+    padding: 160px 0 60px;
 }
 
 .hero-text-title {
@@ -56,6 +66,7 @@ body {
     position: relative;
 }
 
+
 /* intro */
 .intro {
     font-size: 22px;
@@ -64,6 +75,7 @@ body {
     font-weight: 400;
     margin-top: 80px;
 }
+
 
 /* Communication text */
 .communication {
@@ -79,6 +91,7 @@ body {
          margin-bottom: -40px;
 }
 
+
 /* DESIGNER text */
 .designer {
     font-size: 170px;
@@ -90,25 +103,34 @@ body {
     letter-spacing: 2px;
 }
 
+
 /* Horizontal Line */
 .line {
     width: 85%;
-    max-width: 1080px;
-    height: 6px;
-    background: #69D9FF;
-    margin: 14px auto 0;
+  max-width: 1080px;
+  height: 6px;
+  background: #69D9FF;
+  margin: 14px auto 0;
+
+  transform: scaleX(0);
+  transform-origin: center;
+  animation: expandCenter 1.2s ease-out forwards;
 }
+
+@keyframes expandCenter {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
 
 /* Girl Illustration */
 .hero-illustration {
     position: absolute;
     right: 80px;
-    top: 10px;
+    top: 50px;
     width: 280px;
     height: auto;
-    
 }
-
 
 
 /* ABOUT SECTION */
@@ -147,15 +169,24 @@ body {
     line-height: 1.4;
 }
 
+
 .skill-icons {
     display: flex;
-    gap: 10px;
+    gap: 30px;
     margin-top: 20px;
 }
 
 .icon {
-    width: 70px;
+    width: 40px;
+    filter: grayscale(100%);
+    transition: 0.2s ease;
 }
+
+.icon:hover {
+    filter: grayscale(0%);
+    transform: scale(1.90);
+}
+
 
 /* Divider line */
 .divider {
@@ -165,6 +196,7 @@ body {
     opacity: 0.35;
     margin: 80px auto;
 }
+
 
 /* PROJECT SECTION */
 .project-section{
@@ -177,7 +209,7 @@ body {
   font-family:'Comic Neue', cursive;
   font-size: 80px;
   color:transparent;
-  -webkit-text-stroke:2px #69D9FF;
+  -webkit-text-stroke:2px #ffffff;
   margin-bottom: -10px;
 }
 
@@ -205,6 +237,7 @@ body {
   color:#ffffff;
 }
 
+
 /* posters */
 .poster-gallery {
     margin-top: 10px;
@@ -227,35 +260,45 @@ body {
 
 .poster-overlay {
     position: absolute;
-    top: 0; bottom: 0; left: 0; right: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 20%, #dc9a3ed5);
-    color: white;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, #dc9a3ed5);
+    text-align: center;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 40px;
+    transform: translateY(40%);
     opacity: 0;
     transition: 0.4s ease;
-    text-align: center;
-    display: block;
-    padding-top: 70%; 
-}
-
-.poster-overlay h3 {
-    margin-bottom: 10px;
-    font-size: 30px;
-    font-weight: 600;
-}
-
-.poster-overlay p {
-    font-size: 20px;
-}
-
-.poster-card:hover .poster-img {
-    opacity: 0.3;
 }
 
 .poster-card:hover .poster-overlay {
+    transform: translateY(0);
     opacity: 1;
 }
 
+.poster-overlay h3 {
+    margin: 0 0 10px;
+    font-size: 30px;
+    font-weight: 700;
+    text-decoration: underline;
+}
+.poster-overlay p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+.poster-card img {
+    filter: grayscale(100%);
+    transition: 0.4s ease;
+}
+
+.poster-card:hover img {
+    filter: grayscale(0%);
+}
 
 
 /* campaign posters */
@@ -271,7 +314,7 @@ body {
 font-family:'Comic Neue', cursive;
   font-size: 80px;
   color:transparent;
-  -webkit-text-stroke:2px #69D9FF;
+  -webkit-text-stroke:2px #ffffff;
   margin-bottom: -10px;
 }
 
@@ -300,14 +343,26 @@ font-family:'Comic Neue', cursive;
 
 .zoom-poster {
   width: 450px;
-  border: 4px solid white; 
-  transition: transform .5s;
+  border: 4px solid white;
+  transition: transform 0.5s ease;
+}
+
+
+.left-poster {
+  transform-origin: left center;
+}
+
+.center-poster {
+  transform-origin: center center;
+}
+
+.right-poster {
+  transform-origin: right center;
 }
 
 .zoom-poster:hover {
   transform: scale(1.3);
 }
-
 
 
 /* photography */
@@ -323,7 +378,7 @@ font-family:'Comic Neue', cursive;
 font-family:'Comic Neue', cursive;
   font-size: 80px;
   color:transparent;
-  -webkit-text-stroke:2px #69D9FF;
+  -webkit-text-stroke:2px #ffffff;
   margin-bottom: -10px;
 }
 
@@ -368,7 +423,8 @@ font-family:'Comic Neue', cursive;
     opacity: 0.85;
 }
 
-/* Simple blinking arrow */
+
+/* arrow */
 .scroll-arrow {
     animation: blink 1.2s infinite;
 }
@@ -378,6 +434,7 @@ font-family:'Comic Neue', cursive;
     50% { opacity: 1; }
     100% { opacity: 0.3; }
 }
+
 
 /* CONTACT SECTION */
 .contact-section {
@@ -392,7 +449,7 @@ font-family:'Comic Neue', cursive;
 font-family:'Comic Neue', cursive;
   font-size: 80px;
   color:transparent;
-  -webkit-text-stroke:2px #69D9FF;
+  -webkit-text-stroke:2px #ffffff;
   margin-bottom: -10px;
 }
 
@@ -400,7 +457,7 @@ font-family:'Comic Neue', cursive;
   font-size: 80px;
   color:#69D9FF;
   font-weight:800;
-  margin:-40px 0 220px;
+  margin:-50px 0 220px;
   letter-spacing:1px;
 }
 
@@ -412,16 +469,16 @@ font-family:'Comic Neue', cursive;
     align-items: center;
 }
 
+
 /* MAIN CONTACT BOX */
 .contact-box {
     background: #69D9FF;
     color: black;
-    padding: 15px 40px;
-    border-radius: 70px;
+    padding: 10px 40px;
+    border-radius: 100px;
     display: flex;
     align-items: center;
     gap: 14px;
-    text-decoration: none;
     font-size: 20px;
     font-weight: 600;
     width: fit-content;
@@ -429,22 +486,14 @@ font-family:'Comic Neue', cursive;
 }
 
 .contact-box.small {
-    padding: 14px 30px;
+    padding: 10px 30px;
 }
 
-/* Hover turns white */
 .contact-box:hover {
     background: #ffffff;
     color: black;
 }
 
-/* icons */
-.contact-icon {
-    width: 28px;
-    height: 28px;
-}
-
-/* Instagram + LinkedIn */
 .contact-row {
     display: flex;
     gap: 150px;
@@ -469,5 +518,7 @@ font-family:'Comic Neue', cursive;
     width: 40px;
     height: 40px;
     object-fit: contain;
-}    
+}
+
+
 
